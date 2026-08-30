@@ -1,0 +1,73 @@
+name: Build & Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+
+env:
+  PLUGIN_SLUG: fopost-woocommerce
+
+jobs:
+  build:
+    name: Build Plugin Zip
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.1'
+          tools: composer
+
+      - name: Get version from tag
+        id: version
+        run: echo "VERSION=${GITHUB_REF#refs/tags/v}" >> "$GITHUB_OUTPUT"
+
+      - name: Build plugin zip
+        run: make build VERSION=${{ steps.version.outputs.VERSION }}
+
+      - name: Upload zip as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ env.PLUGIN_SLUG }}-${{ steps.version.outputs.VERSION }}
+          path: dist/${{ env.PLUGIN_SLUG }}-${{ steps.version.outputs.VERSION }}.zip
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: dist/${{ env.PLUGIN_SLUG }}-${{ steps.version.outputs.VERSION }}.zip
+          generate_release_notes: true
+
+  # Deploy to WordPress.org SVN. Enable once the plugin listing exists and
+  # WP_ORG_SVN_USERNAME / WP_ORG_SVN_PASSWORD are set as repository secrets.
+  # The listing itself comes from a one-time manual plugin review submission,
+  # see CLAUDE.md, section Releasing.
+  #
+  # wp-deploy:
+  #   name: Deploy to WordPress.org
+  #   runs-on: ubuntu-latest
+  #   needs: build
+  #   steps:
+  #     - uses: actions/checkout@v4
+  #
+  #     - name: Setup PHP
+  #       uses: shivammathur/setup-php@v2
+  #       with:
+  #         php-version: '8.1'
+  #         tools: composer
+  #
+  #     - name: Install production dependencies
+  #       run: composer install --no-dev --prefer-dist --optimize-autoloader --no-progress
+  #
+  #     - name: Deploy to WordPress.org
+  #       uses: 10up/action-wordpress-plugin-deploy@stable
+  #       env:
+  #         SVN_USERNAME: ${{ secrets.WP_ORG_SVN_USERNAME }}
+  #         SVN_PASSWORD: ${{ secrets.WP_ORG_SVN_PASSWORD }}
+  #         SLUG: fopost-woocommerce
