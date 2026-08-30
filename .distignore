@@ -1,0 +1,31 @@
+# Directories
+.git
+.github
+.claude
+tests
+node_modules
+.phpunit.cache
+wp-assets
+dist
+.svn-wp
+.githooks
+
+# Development & CI files
+.gitignore
+.distignore
+.DS_Store
+.editorconfig
+.phpcs.xml
+.phpcs.xml.dist
+phpcs.xml.dist
+phpunit.xml
+phpunit.xml.dist
+composer.lock
+CONTRIBUTING.md
+CHANGELOG.md
+AGENTS.md
+CLAUDE.md
+README.md
+CODE_OF_CONDUCT.md
+SECURITY.md
+Makefile

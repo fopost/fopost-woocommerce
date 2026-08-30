@@ -1,0 +1,69 @@
+{
+    "name": "fopost/woocommerce",
+    "description": "WooCommerce add-on that posts your products to social media through FoPost when they are published, go on sale, or come back in stock.",
+    "type": "wordpress-plugin",
+    "license": "GPL-2.0-or-later",
+    "homepage": "https://fopost.com",
+    "keywords": [
+        "wordpress",
+        "woocommerce",
+        "fopost",
+        "social-media",
+        "scheduling",
+        "auto-post"
+    ],
+    "authors": [
+        {
+            "name": "FoPost",
+            "homepage": "https://fopost.com",
+            "role": "Developer"
+        },
+        {
+            "name": "Porter Bridge, LLC",
+            "homepage": "https://fopost.com",
+            "role": "Publisher"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/fopost/fopost-woocommerce/issues",
+        "source": "https://github.com/fopost/fopost-woocommerce",
+        "docs": "https://fopost.com/docs"
+    },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/fopost/fopost-php"
+        }
+    ],
+    "require": {
+        "php": "^8.1",
+        "fopost/sdk": "^0.1"
+    },
+    "require-dev": {
+        "dealerdirect/phpcodesniffer-composer-installer": "^1.2",
+        "phpunit/phpunit": "^10.0|^11.0",
+        "wp-coding-standards/wpcs": "^3.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "Fopost\\WooCommerce\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Fopost\\WooCommerce\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "test": "phpunit",
+        "lint": "phpcs"
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true,
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        }
+    }
+}

@@ -1,0 +1,280 @@
+# Copyright (C) 2026 Porter Bridge, LLC
+# This file is distributed under the GPL-2.0-or-later license.
+msgid ""
+msgstr ""
+"Project-Id-Version: FoPost for WooCommerce 0.1.0\n"
+"Report-Msgid-Bugs-To: https://github.com/fopost/fopost-woocommerce/issues\n"
+"POT-Creation-Date: 2026-08-30 00:00+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FoPost <https://fopost.com/contact>\n"
+"Language-Team: FoPost <https://fopost.com/contact>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Domain: fopost-woocommerce\n"
+
+#: fopost-woocommerce.php:39
+msgid "FoPost for WooCommerce requires Composer dependencies. Please run \"composer install\" in the plugin directory."
+msgstr ""
+
+#: src/Admin/LogPage.php:31 src/Admin/LogPage.php:32 src/Admin/LogPage.php:58
+msgid "FoPost Activity"
+msgstr ""
+
+#: src/Admin/LogPage.php:42
+msgid "You are not allowed to view this page."
+msgstr ""
+
+#: src/Admin/LogPage.php:61
+msgid "Nothing has been posted yet."
+msgstr ""
+
+#: src/Admin/LogPage.php:67
+msgid "Product"
+msgstr ""
+
+#: src/Admin/LogPage.php:68
+msgid "When"
+msgstr ""
+
+#: src/Admin/LogPage.php:69
+msgid "Trigger"
+msgstr ""
+
+#: src/Admin/LogPage.php:70
+msgid "Result"
+msgstr ""
+
+#: src/Admin/LogPage.php:71
+msgid "FoPost Post ID"
+msgstr ""
+
+#: src/Admin/LogPage.php:125
+msgid "Sent"
+msgstr ""
+
+#: src/Admin/LogPage.php:127
+msgid "Failed"
+msgstr ""
+
+#. translators: 1: product name, 2: the reason the delivery failed.
+#: src/Admin/Notices.php:83
+#, php-format
+msgid "FoPost could not post %1$s: %2$s"
+msgstr ""
+
+#. translators: %s: the reason the delivery failed.
+#: src/Admin/Notices.php:90
+#, php-format
+msgid "FoPost could not send a product post: %s"
+msgstr ""
+
+#: src/Admin/ProductMetaBox.php:41 src/Admin/SettingsTab.php:25
+msgid "FoPost"
+msgstr ""
+
+#: src/Admin/ProductMetaBox.php:62
+msgid "Never post this product"
+msgstr ""
+
+#: src/Admin/ProductMetaBox.php:67
+msgid "Custom message"
+msgstr ""
+
+#: src/Admin/ProductMetaBox.php:73
+msgid "Leave blank to use the message for the trigger."
+msgstr ""
+
+#: src/Admin/ProductMetaBox.php:80
+msgid "Post Now"
+msgstr ""
+
+#: src/Admin/ProductMetaBox.php:85
+msgid "Connect FoPost in WooCommerce, Settings, FoPost to post this product."
+msgstr ""
+
+#: src/Admin/ProductMetaBox.php:90
+msgid "Recent activity"
+msgstr ""
+
+#. translators: 1: how long ago the attempt was, 2: outcome.
+#: src/Admin/ProductMetaBox.php:101
+#, php-format
+msgid "%1$s ago, %2$s"
+msgstr ""
+
+#: src/Admin/ProductMetaBox.php:102
+msgid "unknown"
+msgstr ""
+
+#: src/Admin/ProductMetaBox.php:104
+msgid "sent"
+msgstr ""
+
+#: src/Admin/ProductMetaBox.php:105
+msgid "failed"
+msgstr ""
+
+#: src/Admin/ProductMetaBox.php:161
+msgid "You are not allowed to post this product."
+msgstr ""
+
+#: src/Admin/ProductMetaBox.php:167
+msgid "The product could not be queued. Check the FoPost connection and that a post is not already pending."
+msgstr ""
+
+#: src/Admin/SettingsTab.php:50
+msgid "Connection"
+msgstr ""
+
+#: src/Admin/SettingsTab.php:51 src/Admin/SettingsTab.php:139
+msgid "Triggers and Messages"
+msgstr ""
+
+#: src/Admin/SettingsTab.php:65
+msgid "FoPost Connection"
+msgstr ""
+
+#. translators: %s: link to the FoPost documentation.
+#: src/Admin/SettingsTab.php:69
+#, php-format
+msgid "Create an API key in your FoPost workspace settings, then choose where product posts should go. %s"
+msgstr ""
+
+#: src/Admin/SettingsTab.php:70
+msgid "Read the docs"
+msgstr ""
+
+#: src/Admin/SettingsTab.php:75
+msgid "API Key"
+msgstr ""
+
+#: src/Admin/SettingsTab.php:76
+msgid "Stored on this site and sent only to FoPost. Leave blank to keep the key you already saved."
+msgstr ""
+
+#: src/Admin/SettingsTab.php:84
+msgid "Workspace ID"
+msgstr ""
+
+#: src/Admin/SettingsTab.php:85
+msgid "Save a working API key to pick a workspace from a list instead."
+msgstr ""
+
+#: src/Admin/SettingsTab.php:91
+msgid "Workspace"
+msgstr ""
+
+#: src/Admin/SettingsTab.php:94
+msgid "Select a workspace"
+msgstr ""
+
+#: src/Admin/SettingsTab.php:100
+msgid "Account IDs"
+msgstr ""
+
+#: src/Admin/SettingsTab.php:101
+msgid "Comma separated. Save a workspace to pick connected accounts from a list instead."
+msgstr ""
+
+#: src/Admin/SettingsTab.php:107
+msgid "Accounts"
+msgstr ""
+
+#: src/Admin/SettingsTab.php:108
+msgid "Every product post goes to the accounts you pick here."
+msgstr ""
+
+#: src/Admin/SettingsTab.php:117
+msgid "Attach the product image"
+msgstr ""
+
+#: src/Admin/SettingsTab.php:118
+msgid "Send the featured image with every product post."
+msgstr ""
+
+#. translators: %s: the list of supported placeholders.
+#: src/Admin/SettingsTab.php:143
+#, php-format
+msgid "Turn on the product events you want posted, and edit what each one says. Placeholders: %s"
+msgstr ""
+
+#: src/Admin/SettingsTab.php:153
+msgid "Post to FoPost when this happens."
+msgstr ""
+
+#: src/Admin/SettingsTab.php:160
+msgid "Message"
+msgstr ""
+
+#: src/Admin/SettingsTab.php:161
+msgid "Leave blank to fall back to the default message."
+msgstr ""
+
+#: src/Admin/SettingsTab.php:183
+msgid "Product published"
+msgstr ""
+
+#: src/Admin/SettingsTab.php:184
+msgid "Product goes on sale"
+msgstr ""
+
+#: src/Admin/SettingsTab.php:185
+msgid "Product back in stock"
+msgstr ""
+
+#: src/Admin/SettingsTab.php:214
+msgid "fp_..."
+msgstr ""
+
+#: src/Admin/SettingsTab.php:224
+msgid "Remove the stored API key"
+msgstr ""
+
+#: src/Admin/SettingsTab.php:243
+msgid "You are not allowed to change these settings."
+msgstr ""
+
+#: src/Admin/SettingsTab.php:260
+msgid "FoPost settings saved."
+msgstr ""
+
+#: src/Plugin.php:76
+msgid "FoPost for WooCommerce needs WooCommerce 8.0 or newer to be installed and active."
+msgstr ""
+
+#: src/Publisher.php:45
+msgid "The product no longer exists."
+msgstr ""
+
+#: src/Publisher.php:53
+msgid "The message template rendered empty, so nothing was sent."
+msgstr ""
+
+#: src/Publisher.php:59
+msgid "FoPost is not connected yet. Add an API key, a workspace and at least one account."
+msgstr ""
+
+#: src/Settings.php:47
+msgid ""
+"New in the shop: {product_name}, now {price}\n"
+"\n"
+"{short_description}\n"
+"\n"
+"{permalink}"
+msgstr ""
+
+#: src/Settings.php:51
+msgid ""
+"On sale now: {product_name} is {sale_price}, down from {price}.\n"
+"\n"
+"{permalink}"
+msgstr ""
+
+#: src/Settings.php:55
+msgid ""
+"Back in stock: {product_name}, {price}\n"
+"\n"
+"{permalink}"
+msgstr ""

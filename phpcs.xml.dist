@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<ruleset name="FoPost for WooCommerce">
+    <description>FoPost WooCommerce coding standard: WordPress security, I18n, DB, and PHP sniffs on a PSR-style codebase.</description>
+
+    <file>src</file>
+    <file>fopost-woocommerce.php</file>
+    <file>uninstall.php</file>
+
+    <arg name="extensions" value="php"/>
+    <arg value="sp"/>
+
+    <!-- Security: escaping, nonces, input sanitization, safe redirects. -->
+    <rule ref="WordPress.Security"/>
+
+    <!-- WordPress API usage: I18n, deprecated/alternative/discouraged functions, enqueues, capabilities. -->
+    <rule ref="WordPress.WP"/>
+    <rule ref="WordPress.WP.Capabilities">
+        <properties>
+            <!-- Registered by WooCommerce, not by WordPress core. -->
+            <property name="custom_capabilities" type="array">
+                <element value="manage_woocommerce"/>
+                <element value="edit_products"/>
+            </property>
+        </properties>
+    </rule>
+    <rule ref="WordPress.WP.I18n">
+        <properties>
+            <property name="text_domain" type="array">
+                <element value="fopost-woocommerce"/>
+            </property>
+        </properties>
+    </rule>
+
+    <!-- Database access. -->
+    <rule ref="WordPress.DB"/>
+
+    <!-- PHP pitfalls (silenced errors, extract, dev functions, strict in_array, ...). -->
+    <rule ref="WordPress.PHP">
+        <!-- The codebase intentionally does not use Yoda conditions. -->
+        <exclude name="WordPress.PHP.YodaConditions"/>
+        <!-- Deprecated in WordPressCS 3.3, removed in 4.0. -->
+        <exclude name="WordPress.PHP.POSIXFunctions"/>
+    </rule>
+
+    <!-- Global namespace hygiene. -->
+    <rule ref="WordPress.NamingConventions.PrefixAllGlobals">
+        <properties>
+            <property name="prefixes" type="array">
+                <element value="fopost_wc"/>
+                <element value="Fopost"/>
+                <element value="FOPOST_WC"/>
+            </property>
+        </properties>
+    </rule>
+    <rule ref="WordPress.NamingConventions.ValidHookName"/>
+
+    <!-- Parseable PHP. -->
+    <rule ref="Generic.PHP.Syntax"/>
+</ruleset>
