@@ -1,0 +1,25 @@
+# Dependencies
+/vendor/
+
+# Composer lock (plugin consumers run their own install)
+composer.lock
+
+# PHPUnit
+.phpunit.result.cache
+.phpunit.cache/
+
+# IDE / OS
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# Build artifacts
+*.zip
+/dist/
+/node_modules/
+
+# SVN working copy (WordPress.org)
+/.svn-wp/
