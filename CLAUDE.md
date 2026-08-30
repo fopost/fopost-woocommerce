@@ -168,7 +168,7 @@ Never rename a key without a migration that reads the old value and writes the n
 
 The SDK owns the transport, but the shape matters when reading its code:
 
-- Base URL `https://api.fopost.com/api/v1`, overridable through the `fopost_wc_api_base_url` filter
+- Base URL `https://api.fopost.com/v1`, overridable through the `fopost_wc_api_base_url` filter
 - Auth is the header `X-API-Key`, not `Authorization: Bearer`
 - Success bodies are wrapped in `{"data": ...}`; errors are `{"error": "<code>", "message": "..."}`
 - The SDK retries 429 honoring `Retry-After`, capped at 60s. Action Scheduler retries everything else
