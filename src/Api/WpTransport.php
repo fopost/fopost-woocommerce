@@ -45,7 +45,7 @@ final class WpTransport implements Transport
 
         if (is_wp_error($response)) {
             throw new ApiException(
-                sprintf('fopost: request failed (%s)', $response->get_error_message()),
+                esc_html(sprintf('fopost: request failed (%s)', $response->get_error_message())),
                 0,
                 'transport_error',
                 null,

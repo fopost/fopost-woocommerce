@@ -14,6 +14,15 @@
 
     <!-- WordPress API usage: I18n, deprecated/alternative/discouraged functions, enqueues, capabilities. -->
     <rule ref="WordPress.WP"/>
+    <rule ref="WordPress.WP.Capabilities">
+        <properties>
+            <!-- Registered by WooCommerce, not by WordPress core. -->
+            <property name="custom_capabilities" type="array">
+                <element value="manage_woocommerce"/>
+                <element value="edit_products"/>
+            </property>
+        </properties>
+    </rule>
     <rule ref="WordPress.WP.I18n">
         <properties>
             <property name="text_domain" type="array">
