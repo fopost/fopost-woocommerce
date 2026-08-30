@@ -29,12 +29,6 @@
         "source": "https://github.com/fopost/fopost-woocommerce",
         "docs": "https://fopost.com/docs"
     },
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/fopost/fopost-php"
-        }
-    ],
     "require": {
         "php": "^8.1",
         "fopost/sdk": "^0.1"
