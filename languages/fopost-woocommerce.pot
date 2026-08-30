@@ -258,7 +258,7 @@ msgstr ""
 
 #: src/Settings.php:47
 msgid ""
-"New in the shop: {product_name} — {price}\n"
+"New in the shop: {product_name}, now {price}\n"
 "\n"
 "{short_description}\n"
 "\n"
@@ -274,7 +274,7 @@ msgstr ""
 
 #: src/Settings.php:55
 msgid ""
-"Back in stock: {product_name} — {price}\n"
+"Back in stock: {product_name}, {price}\n"
 "\n"
 "{permalink}"
 msgstr ""

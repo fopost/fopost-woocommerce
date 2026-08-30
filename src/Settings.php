@@ -44,7 +44,7 @@ final class Settings
     {
         return [
             self::TRIGGER_PUBLISHED => __(
-                "New in the shop: {product_name} — {price}\n\n{short_description}\n\n{permalink}",
+                "New in the shop: {product_name}, now {price}\n\n{short_description}\n\n{permalink}",
                 'fopost-woocommerce'
             ),
             self::TRIGGER_ON_SALE => __(
@@ -52,7 +52,7 @@ final class Settings
                 'fopost-woocommerce'
             ),
             self::TRIGGER_BACK_IN_STOCK => __(
-                "Back in stock: {product_name} — {price}\n\n{permalink}",
+                "Back in stock: {product_name}, {price}\n\n{permalink}",
                 'fopost-woocommerce'
             ),
         ];

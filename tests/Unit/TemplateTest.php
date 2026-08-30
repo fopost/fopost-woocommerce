@@ -48,7 +48,7 @@ class TemplateTest extends TestCase
             'short_description' => '<p>Warm <strong>glow</strong>.</p><script>steal()</script>',
         ]);
 
-        $message = Template::render('{product_name} — {short_description}', $product);
+        $message = Template::render('{product_name}: {short_description}', $product);
 
         $this->assertStringNotContainsString('<', $message);
         $this->assertStringNotContainsString('alert(1)', $message);
