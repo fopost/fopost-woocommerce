@@ -4,7 +4,7 @@ Donate link: https://fopost.com
 Tags: woocommerce, social media, auto post, product marketing, scheduling
 Requires at least: 6.0
 Requires PHP: 8.1
-Tested up to: 6.9
+Tested up to: 7.1
 Stable tag: 0.1.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -91,6 +91,24 @@ Yes. The plugin declares compatibility and never touches order storage at all.
 2. Triggers and Messages: each product event with its own switch and its own copy.
 3. The FoPost box on a product, with the opt-out, the custom message, and Post Now.
 4. WooCommerce, FoPost Activity: what was sent, when, and the FoPost post ID.
+
+== Third-Party Services ==
+
+This plugin sends data to FoPost, a hosted publishing service at
+[fopost.com](https://fopost.com). You need a FoPost account and an API key for
+the plugin to do anything.
+
+When a product you have enabled is published, goes on sale, or comes back in
+stock, the plugin calls the FoPost API at `https://api.fopost.com` and sends the
+post text rendered from your message template — which can include the product
+name, short description, price and permalink — along with the product image and
+the accounts you chose to post to. FoPost then delivers that post to those
+social accounts. **Nothing is sent until you enter an API key and enable a
+product event.**
+
+Service terms: [Terms of Service](https://fopost.com/terms-of-service) &middot;
+[Privacy Policy](https://fopost.com/privacy-policy) &middot;
+[Data Processing Addendum](https://fopost.com/dpa).
 
 == Changelog ==
 
