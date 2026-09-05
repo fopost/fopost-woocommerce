@@ -1,5 +1,5 @@
 === FoPost for WooCommerce ===
-Contributors: fopost
+Contributors: alihesari
 Donate link: https://fopost.com
 Tags: woocommerce, social media, auto post, product marketing, scheduling
 Requires at least: 6.0
