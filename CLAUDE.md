@@ -67,11 +67,8 @@ only. If `fopost-wp` ever grows an outbound client, revisit this and delete the 
 
 ## Parent Dependency
 
-`fopost/sdk` is **not on Packagist yet** (checked 2026-08-30). `composer.json` declares the normal
-released coordinate (`"fopost/sdk": "^0.1"`) and adds a `repositories` VCS entry pointing at
-`https://github.com/fopost/fopost-php`, so `composer install` resolves today, locally and in CI.
-**Delete that `repositories` block once `fopost/sdk` is published to Packagist**, nothing else needs
-to change.
+`fopost/sdk` resolves from Packagist (`"fopost/sdk": "^0.1"`). There is no `repositories` block in
+`composer.json` and none should be added back; the source lives in the sibling `fopost-php` repo.
 
 ## Architecture
 
@@ -225,15 +222,38 @@ layout or copy.
 
 ## Releasing
 
-`make version-bump V=x.y.z`, `make version-check`, `composer lint`, `composer test`, then tag
-`vx.y.z` and push. `.github/workflows/release.yml` builds the zip with production dependencies only
-and attaches it to a GitHub release.
+`make version-bump V=x.y.z` (it moves the plugin header, `FOPOST_WC_VERSION` and the readme
+`Stable tag` together), `make version-check`, `make lint`, `make test`, then tag `vx.y.z` and push.
+`.github/workflows/release.yml` builds the zip with production dependencies only and attaches it to
+a GitHub release.
 
 **WordPress.org hosting requires a one-time manual plugin review submission.** The listing does not
-exist until a human uploads the zip to https://wordpress.org/plugins/developers/add/ and the review
-team approves it, which creates the SVN repository. Only then does the commented-out `wp-deploy`
-job in `release.yml` become usable, and it needs the repository secrets `WP_ORG_SVN_USERNAME` and
-`WP_ORG_SVN_PASSWORD` (the same names `fopost-wp` uses). Uncomment the job at that point.
+exist until a human uploads `make build`'s zip to https://wordpress.org/plugins/developers/add/ and
+the review team approves it, which creates the SVN repository.
+
+Once the SVN repository exists, `make` drives it:
+
+| Target | What it does |
+| :--- | :--- |
+| `make svn-checkout` | One-time checkout into `.svn-wp/` (gitignored) |
+| `make svn-sync` | Production build rsynced into `trunk`, `.distignore` respected |
+| `make svn-diff` | Review what would be committed |
+| `make svn-tag` | Stage `tags/$(VERSION)` as a local copy of trunk |
+| `make svn-push` | Commit trunk and the tag in **one** revision |
+| `make svn-assets` | Push `wp-assets/` to the SVN `assets/` branch |
+| `make release` | lint → test → sync → tag → push |
+
+Trunk and the tag must land in a single revision: WordPress.org reads trunk's `Stable tag` on
+commit and keeps the previous version if that tag does not exist yet. `WP_ORG_SVN_USERNAME` in the
+environment supplies `--username`; leave it unset to be prompted.
+
+`wp-assets/` holds the directory artwork and is not tracked in git: `banner-1544x500.png`,
+`banner-772x250.png`, `icon-128x128.png`, `icon-256x256.png`, and `screenshot-1.png` through
+`screenshot-4.png` matching the readme's Screenshots section.
+
+The commented-out `wp-deploy` job in `release.yml` is the alternative to `make release`; it needs
+the repository secrets `WP_ORG_SVN_USERNAME` and `WP_ORG_SVN_PASSWORD` (the same names `fopost-wp`
+uses). Uncomment it at that point.
 
 ## Git
 
