@@ -47,6 +47,13 @@ WooCommerce, FoPost Activity lists what was posted for which product, with the F
 
 A FoPost account with an API key, at least one connected social account, and WooCommerce 8.0 or newer.
 
+**Links**
+
+* [FoPost](https://fopost.com) - the hosted publishing service this add-on posts through
+* [Documentation](https://fopost.com/docs/sdks/woocommerce) - setup, placeholders, and the filters
+* [Pricing](https://fopost.com/pricing) - what a FoPost account costs
+* [Support](https://fopost.com/contact) - questions and problems
+
 == Installation ==
 
 1. Upload the plugin to `wp-content/plugins/fopost-woocommerce`, or install it through Plugins, Add New.

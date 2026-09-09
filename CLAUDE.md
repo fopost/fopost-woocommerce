@@ -247,9 +247,9 @@ Trunk and the tag must land in a single revision: WordPress.org reads trunk's `S
 commit and keeps the previous version if that tag does not exist yet. `WP_ORG_SVN_USERNAME` in the
 environment supplies `--username`; leave it unset to be prompted.
 
-`wp-assets/` holds the directory artwork and is not tracked in git: `banner-1544x500.png`,
-`banner-772x250.png`, `icon-128x128.png`, `icon-256x256.png`, and `screenshot-1.png` through
-`screenshot-4.png` matching the readme's Screenshots section.
+`wp-assets/` holds the directory artwork, tracked in git and kept out of the zip by `.distignore`.
+The icon and both banners are committed; `screenshot-1.png` through `screenshot-4.png`, matching the
+readme's Screenshots section, are still missing.
 
 The commented-out `wp-deploy` job in `release.yml` is the alternative to `make release`; it needs
 the repository secrets `WP_ORG_SVN_USERNAME` and `WP_ORG_SVN_PASSWORD` (the same names `fopost-wp`
