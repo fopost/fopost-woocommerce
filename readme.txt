@@ -3,9 +3,9 @@ Contributors: alihesari
 Donate link: https://fopost.com
 Tags: woocommerce, social media, auto post, product marketing, scheduling
 Requires at least: 6.0
-Requires PHP: 8.1
 Tested up to: 7.1
 Stable tag: 0.1.0
+Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -46,6 +46,13 @@ WooCommerce, FoPost Activity lists what was posted for which product, with the F
 **What you need**
 
 A FoPost account with an API key, at least one connected social account, and WooCommerce 8.0 or newer.
+
+**Links**
+
+* [FoPost](https://fopost.com) - the hosted publishing service this add-on posts through
+* [Documentation](https://fopost.com/docs/sdks/woocommerce) - setup, placeholders, and the filters
+* [Pricing](https://fopost.com/pricing) - what a FoPost account costs
+* [Support](https://fopost.com/contact) - questions and problems
 
 == Installation ==
 
