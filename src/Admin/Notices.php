@@ -80,14 +80,14 @@ final class Notices
             if (is_string($title) && $title !== '') {
                 printf(
                     /* translators: 1: product name, 2: the reason the delivery failed. */
-                    esc_html__('FoPost could not post %1$s: %2$s', 'fopost-woocommerce'),
+                    esc_html__('FoPost could not post %1$s: %2$s', 'fopost-for-woocommerce'),
                     '<strong>' . esc_html($title) . '</strong>', // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Escaped above.
                     esc_html($message)
                 );
             } else {
                 printf(
                     /* translators: %s: the reason the delivery failed. */
-                    esc_html__('FoPost could not send a product post: %s', 'fopost-woocommerce'),
+                    esc_html__('FoPost could not send a product post: %s', 'fopost-for-woocommerce'),
                     esc_html($message)
                 );
             }

@@ -38,7 +38,7 @@ final class ProductMetaBox
 
         add_meta_box(
             'fopost_wc_product',
-            __('FoPost', 'fopost-woocommerce'),
+            __('FoPost', 'fopost-for-woocommerce'),
             [$this, 'render'],
             'product',
             'side',
@@ -59,35 +59,35 @@ final class ProductMetaBox
         <p>
             <label>
                 <input type="checkbox" name="fopost_wc_disabled" value="yes" <?php checked($optedOut); ?> />
-                <?php esc_html_e('Never post this product', 'fopost-woocommerce'); ?>
+                <?php esc_html_e('Never post this product', 'fopost-for-woocommerce'); ?>
             </label>
         </p>
 
         <p>
-            <label for="fopost_wc_message"><strong><?php esc_html_e('Custom message', 'fopost-woocommerce'); ?></strong></label>
+            <label for="fopost_wc_message"><strong><?php esc_html_e('Custom message', 'fopost-for-woocommerce'); ?></strong></label>
             <textarea
                 id="fopost_wc_message"
                 name="fopost_wc_message"
                 rows="4"
                 style="width:100%"
-                placeholder="<?php esc_attr_e('Leave blank to use the message for the trigger.', 'fopost-woocommerce'); ?>"
+                placeholder="<?php esc_attr_e('Leave blank to use the message for the trigger.', 'fopost-for-woocommerce'); ?>"
             ><?php echo esc_textarea($override); ?></textarea>
         </p>
 
         <?php if (Settings::isConfigured()) : ?>
             <p>
                 <a class="button" href="<?php echo esc_url(self::postNowUrl($productId)); ?>">
-                    <?php esc_html_e('Post Now', 'fopost-woocommerce'); ?>
+                    <?php esc_html_e('Post Now', 'fopost-for-woocommerce'); ?>
                 </a>
             </p>
         <?php else : ?>
             <p class="description">
-                <?php esc_html_e('Connect FoPost in WooCommerce, Settings, FoPost to post this product.', 'fopost-woocommerce'); ?>
+                <?php esc_html_e('Connect FoPost in WooCommerce, Settings, FoPost to post this product.', 'fopost-for-woocommerce'); ?>
             </p>
         <?php endif; ?>
 
         <?php if ($entries !== []) : ?>
-            <p><strong><?php esc_html_e('Recent activity', 'fopost-woocommerce'); ?></strong></p>
+            <p><strong><?php esc_html_e('Recent activity', 'fopost-for-woocommerce'); ?></strong></p>
             <ul style="margin:0">
                 <?php foreach (array_slice($entries, 0, 5) as $entry) : ?>
                     <li>
@@ -98,11 +98,11 @@ final class ProductMetaBox
                         echo esc_html(
                             sprintf(
                                 /* translators: 1: how long ago the attempt was, 2: outcome. */
-                                __('%1$s ago, %2$s', 'fopost-woocommerce'),
-                                $time > 0 ? human_time_diff($time) : __('unknown', 'fopost-woocommerce'),
+                                __('%1$s ago, %2$s', 'fopost-for-woocommerce'),
+                                $time > 0 ? human_time_diff($time) : __('unknown', 'fopost-for-woocommerce'),
                                 $status === Log::STATUS_SUCCESS
-                                    ? __('sent', 'fopost-woocommerce')
-                                    : __('failed', 'fopost-woocommerce')
+                                    ? __('sent', 'fopost-for-woocommerce')
+                                    : __('failed', 'fopost-for-woocommerce')
                             )
                         );
                         ?>
@@ -158,13 +158,13 @@ final class ProductMetaBox
         check_admin_referer(self::POST_NOW_ACTION . '_' . $productId);
 
         if (! current_user_can('manage_woocommerce') || ! current_user_can('edit_post', $productId)) {
-            wp_die(esc_html__('You are not allowed to post this product.', 'fopost-woocommerce'), 403);
+            wp_die(esc_html__('You are not allowed to post this product.', 'fopost-for-woocommerce'), 403);
         }
 
         $queued = Settings::isConfigured() && Scheduler::enqueue($productId, Settings::TRIGGER_PUBLISHED);
 
         if (! $queued) {
-            Notices::add($productId, __('The product could not be queued. Check the FoPost connection and that a post is not already pending.', 'fopost-woocommerce'));
+            Notices::add($productId, __('The product could not be queued. Check the FoPost connection and that a post is not already pending.', 'fopost-for-woocommerce'));
         }
 
         wp_safe_redirect(add_query_arg('fopost_wc_queued', $queued ? '1' : '0', get_edit_post_link($productId, 'url')));

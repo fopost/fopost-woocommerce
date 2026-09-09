@@ -45,15 +45,15 @@ final class Settings
         return [
             self::TRIGGER_PUBLISHED => __(
                 "New in the shop: {product_name}, now {price}\n\n{short_description}\n\n{permalink}",
-                'fopost-woocommerce'
+                'fopost-for-woocommerce'
             ),
             self::TRIGGER_ON_SALE => __(
                 "On sale now: {product_name} is {sale_price}, down from {price}.\n\n{permalink}",
-                'fopost-woocommerce'
+                'fopost-for-woocommerce'
             ),
             self::TRIGGER_BACK_IN_STOCK => __(
                 "Back in stock: {product_name}, {price}\n\n{permalink}",
-                'fopost-woocommerce'
+                'fopost-for-woocommerce'
             ),
         ];
     }

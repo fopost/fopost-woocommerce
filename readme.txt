@@ -56,7 +56,7 @@ A FoPost account with an API key, at least one connected social account, and Woo
 
 == Installation ==
 
-1. Upload the plugin to `wp-content/plugins/fopost-woocommerce`, or install it through Plugins, Add New.
+1. Upload the plugin to `wp-content/plugins/fopost-for-woocommerce`, or install it through Plugins, Add New.
 2. Activate the plugin. WooCommerce must be active first.
 3. Go to **WooCommerce, Settings, FoPost** and paste your FoPost API key.
 4. Save, then pick the workspace and the accounts your product posts should go to.

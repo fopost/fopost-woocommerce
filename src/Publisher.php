@@ -42,7 +42,7 @@ final class Publisher
         $product = function_exists('wc_get_product') ? wc_get_product($productId) : null;
 
         if (! $product instanceof \WC_Product) {
-            Log::record($productId, $trigger, Log::STATUS_FAILED, '', __('The product no longer exists.', 'fopost-woocommerce'));
+            Log::record($productId, $trigger, Log::STATUS_FAILED, '', __('The product no longer exists.', 'fopost-for-woocommerce'));
 
             return null;
         }
@@ -50,13 +50,13 @@ final class Publisher
         $message = $this->message($productId, $product, $trigger);
 
         if ($message === '') {
-            $this->fail($productId, $trigger, __('The message template rendered empty, so nothing was sent.', 'fopost-woocommerce'));
+            $this->fail($productId, $trigger, __('The message template rendered empty, so nothing was sent.', 'fopost-for-woocommerce'));
 
             return null;
         }
 
         if (! Settings::isConfigured()) {
-            $this->fail($productId, $trigger, __('FoPost is not connected yet. Add an API key, a workspace and at least one account.', 'fopost-woocommerce'));
+            $this->fail($productId, $trigger, __('FoPost is not connected yet. Add an API key, a workspace and at least one account.', 'fopost-for-woocommerce'));
 
             return null;
         }

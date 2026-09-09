@@ -73,7 +73,7 @@ final class Plugin
         }
 
         echo '<div class="notice notice-error"><p>';
-        echo esc_html__('FoPost for WooCommerce needs WooCommerce 8.0 or newer to be installed and active.', 'fopost-woocommerce');
+        echo esc_html__('FoPost for WooCommerce needs WooCommerce 8.0 or newer to be installed and active.', 'fopost-for-woocommerce');
         echo '</p></div>';
     }
 }

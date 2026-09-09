@@ -4,7 +4,7 @@ Guidance for Claude Code (claude.ai/code) when working in this repository.
 
 ## What This Is
 
-**FoPost for WooCommerce** is a WordPress plugin (WP.org slug `fopost-woocommerce`) that posts a
+**FoPost for WooCommerce** is a WordPress plugin (WP.org slug `fopost-for-woocommerce`) that posts a
 shop's products to social media through the hosted [FoPost](https://fopost.com) service. A
 WooCommerce product event queues an Action Scheduler job; that job renders a message template and
 sends it to the FoPost API using the official [`fopost/sdk`](https://github.com/fopost/fopost-php)
@@ -13,8 +13,8 @@ PHP SDK.
 | Property | Value |
 |---|---|
 | **Type** | WordPress plugin, WooCommerce add-on |
-| **WordPress.org slug** | `fopost-woocommerce` |
-| **Text Domain** | `fopost-woocommerce` |
+| **WordPress.org slug** | `fopost-for-woocommerce` |
+| **Text Domain** | `fopost-for-woocommerce` |
 | **PHP namespace** | `Fopost\WooCommerce\` |
 | **PHP version** | 8.1+ (strict types required) |
 | **Requires** | WordPress 6.0+, WooCommerce 8.0+ |
@@ -33,20 +33,25 @@ PHP SDK.
 
 ## Text Domain Rules
 
-The text domain is **`fopost-woocommerce`**, matching the plugin folder name inside
+The text domain is **`fopost-for-woocommerce`**, matching the plugin folder name inside
 `wp-content/plugins/` and the WP.org slug. WordPress Plugin Check requires the match.
 
 ```php
-__('Settings', 'fopost-woocommerce')
-esc_html_e('Post Now', 'fopost-woocommerce')
+__('Settings', 'fopost-for-woocommerce')
+esc_html_e('Post Now', 'fopost-for-woocommerce')
 ```
 
 The rule across the FoPost WordPress repos is *text domain equals the WP.org slug, never the repo
 name*. In `fopost-wp` the repo is `fopost-wp` and the slug is `fopost`, so its domain is `fopost`.
-In `fopost-social-wp` the slug is `fopost-social`. Here the repo name and the slug happen to be the
-same string, so the domain is `fopost-woocommerce`. Using a bare `fopost` here would fail Plugin
-Check. Anything else as the second argument to `__()`, `_e()`, `esc_html__()`, `esc_html_e()` or
-`_n()` is a bug.
+In `fopost-social-wp` the slug is `fopost-social`. Here the repo stays `fopost-woocommerce` while
+the slug is `fopost-for-woocommerce`, so the domain follows the slug. Anything else as the second
+argument to `__()`, `_e()`, `esc_html__()`, `esc_html_e()` or `_n()` is a bug.
+
+**The slug cannot contain `woocommerce` on its own.** WordPress.org treats it as a restricted term
+and refuses it anywhere in a permalink; only the `X for WooCommerce` display-name form is allowed,
+which is why the slug carries the `for`. The plugin name, the repo name, the main file
+`fopost-woocommerce.php`, the `Fopost\WooCommerce\` namespace, the `fopost_wc_` option and meta
+keys, the Action Scheduler group and the admin menu slug are all unaffected and stay as they are.
 
 ## Dependency Decision
 
@@ -190,7 +195,7 @@ Regenerate the translation template after touching a user-facing string:
 xgettext --language=PHP --from-code=UTF-8 --no-wrap \
   --keyword=__ --keyword=_e --keyword=esc_html__ --keyword=esc_html_e \
   --keyword=esc_attr__ --keyword=esc_attr_e --keyword=_x:1,2c --keyword=_n:1,2 \
-  --add-comments=translators: -o languages/fopost-woocommerce.pot \
+  --add-comments=translators: -o languages/fopost-for-woocommerce.pot \
   fopost-woocommerce.php uninstall.php $(find src -name '*.php' | sort)
 ```
 

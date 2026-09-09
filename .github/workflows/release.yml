@@ -9,7 +9,7 @@ permissions:
   contents: write
 
 env:
-  PLUGIN_SLUG: fopost-woocommerce
+  PLUGIN_SLUG: fopost-for-woocommerce
 
 jobs:
   build:
@@ -70,4 +70,4 @@ jobs:
   #       env:
   #         SVN_USERNAME: ${{ secrets.WP_ORG_SVN_USERNAME }}
   #         SVN_PASSWORD: ${{ secrets.WP_ORG_SVN_PASSWORD }}
-  #         SLUG: fopost-woocommerce
+  #         SLUG: fopost-for-woocommerce
