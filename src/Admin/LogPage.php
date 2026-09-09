@@ -28,8 +28,8 @@ final class LogPage
     {
         add_submenu_page(
             'woocommerce',
-            __('FoPost Activity', 'fopost-woocommerce'),
-            __('FoPost Activity', 'fopost-woocommerce'),
+            __('FoPost Activity', 'fopost-for-woocommerce'),
+            __('FoPost Activity', 'fopost-for-woocommerce'),
             'manage_woocommerce',
             self::MENU_SLUG,
             [$this, 'render']
@@ -39,7 +39,7 @@ final class LogPage
     public function render(): void
     {
         if (! current_user_can('manage_woocommerce')) {
-            wp_die(esc_html__('You are not allowed to view this page.', 'fopost-woocommerce'), 403);
+            wp_die(esc_html__('You are not allowed to view this page.', 'fopost-for-woocommerce'), 403);
         }
 
         $paged = isset($_GET['paged']) ? max(1, absint(wp_unslash($_GET['paged']))) : 1; // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only pagination.
@@ -55,20 +55,20 @@ final class LogPage
             'no_found_rows'  => false,
         ]);
 
-        echo '<div class="wrap"><h1>' . esc_html__('FoPost Activity', 'fopost-woocommerce') . '</h1>';
+        echo '<div class="wrap"><h1>' . esc_html__('FoPost Activity', 'fopost-for-woocommerce') . '</h1>';
 
         if (! $query->have_posts()) {
-            echo '<p>' . esc_html__('Nothing has been posted yet.', 'fopost-woocommerce') . '</p></div>';
+            echo '<p>' . esc_html__('Nothing has been posted yet.', 'fopost-for-woocommerce') . '</p></div>';
 
             return;
         }
 
         echo '<table class="widefat striped"><thead><tr>';
-        echo '<th>' . esc_html__('Product', 'fopost-woocommerce') . '</th>';
-        echo '<th>' . esc_html__('When', 'fopost-woocommerce') . '</th>';
-        echo '<th>' . esc_html__('Trigger', 'fopost-woocommerce') . '</th>';
-        echo '<th>' . esc_html__('Result', 'fopost-woocommerce') . '</th>';
-        echo '<th>' . esc_html__('FoPost Post ID', 'fopost-woocommerce') . '</th>';
+        echo '<th>' . esc_html__('Product', 'fopost-for-woocommerce') . '</th>';
+        echo '<th>' . esc_html__('When', 'fopost-for-woocommerce') . '</th>';
+        echo '<th>' . esc_html__('Trigger', 'fopost-for-woocommerce') . '</th>';
+        echo '<th>' . esc_html__('Result', 'fopost-for-woocommerce') . '</th>';
+        echo '<th>' . esc_html__('FoPost Post ID', 'fopost-for-woocommerce') . '</th>';
         echo '</tr></thead><tbody>';
 
         foreach ($query->posts as $product) {
@@ -122,9 +122,9 @@ final class LogPage
         echo '<td>' . esc_html($labels[$trigger] ?? $trigger) . '</td>';
 
         if ($status === Log::STATUS_SUCCESS) {
-            echo '<td>' . esc_html__('Sent', 'fopost-woocommerce') . '</td>';
+            echo '<td>' . esc_html__('Sent', 'fopost-for-woocommerce') . '</td>';
         } else {
-            echo '<td><strong>' . esc_html__('Failed', 'fopost-woocommerce') . '</strong><br /><span class="description">' . esc_html($message) . '</span></td>';
+            echo '<td><strong>' . esc_html__('Failed', 'fopost-for-woocommerce') . '</strong><br /><span class="description">' . esc_html($message) . '</span></td>';
         }
 
         echo '<td><code>' . esc_html($postId) . '</code></td>';

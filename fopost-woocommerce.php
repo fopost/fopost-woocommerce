@@ -14,7 +14,7 @@
  * Author URI:        https://fopost.com
  * License:           GPL-2.0-or-later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain:       fopost-woocommerce
+ * Text Domain:       fopost-for-woocommerce
  * Domain Path:       /languages
  */
 
@@ -36,7 +36,7 @@ define('FOPOST_WC_BASENAME', plugin_basename(__FILE__));
 if (! file_exists(FOPOST_WC_DIR . 'vendor/autoload.php')) {
     add_action('admin_notices', static function (): void {
         echo '<div class="notice notice-error"><p>';
-        echo esc_html__('FoPost for WooCommerce requires Composer dependencies. Please run "composer install" in the plugin directory.', 'fopost-woocommerce');
+        echo esc_html__('FoPost for WooCommerce requires Composer dependencies. Please run "composer install" in the plugin directory.', 'fopost-for-woocommerce');
         echo '</p></div>';
     });
 

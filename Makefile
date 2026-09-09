@@ -2,7 +2,7 @@
 # FoPost for WooCommerce Makefile
 # ────────────────────────────────────────────────────────────
 
-PLUGIN_SLUG  := fopost-woocommerce
+PLUGIN_SLUG  := fopost-for-woocommerce
 VERSION      ?= $(shell grep -i 'Version:' fopost-woocommerce.php | head -1 | sed 's/.*Version:[[:space:]]*//' | tr -d '[:space:]')
 DIST_DIR     := dist
 BUILD_DIR    := $(DIST_DIR)/$(PLUGIN_SLUG)

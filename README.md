@@ -25,7 +25,7 @@ Each trigger is off by default, has its own message template, and can be switche
 composer install
 ```
 
-Then copy the directory to `wp-content/plugins/fopost-woocommerce` and activate it. WooCommerce must
+Then copy the directory to `wp-content/plugins/fopost-for-woocommerce` and activate it. WooCommerce must
 be active first. A release zip with production dependencies is attached to every GitHub release.
 
 ## Configure

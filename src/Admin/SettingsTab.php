@@ -22,7 +22,7 @@ final class SettingsTab extends WC_Settings_Page
     public function __construct()
     {
         $this->id    = 'fopost';
-        $this->label = __('FoPost', 'fopost-woocommerce');
+        $this->label = __('FoPost', 'fopost-for-woocommerce');
 
         parent::__construct();
 
@@ -47,8 +47,8 @@ final class SettingsTab extends WC_Settings_Page
     protected function get_own_sections(): array
     {
         return [
-            ''         => __('Connection', 'fopost-woocommerce'),
-            'triggers' => __('Triggers and Messages', 'fopost-woocommerce'),
+            ''         => __('Connection', 'fopost-for-woocommerce'),
+            'triggers' => __('Triggers and Messages', 'fopost-for-woocommerce'),
         ];
     }
 
@@ -62,18 +62,18 @@ final class SettingsTab extends WC_Settings_Page
 
         $settings = [
             [
-                'title' => __('FoPost Connection', 'fopost-woocommerce'),
+                'title' => __('FoPost Connection', 'fopost-for-woocommerce'),
                 'type'  => 'title',
                 'desc'  => sprintf(
                     /* translators: %s: link to the FoPost documentation. */
-                    __('Create an API key in your FoPost workspace settings, then choose where product posts should go. %s', 'fopost-woocommerce'),
-                    '<a href="https://fopost.com/docs" target="_blank" rel="noopener noreferrer">' . esc_html__('Read the docs', 'fopost-woocommerce') . '</a>'
+                    __('Create an API key in your FoPost workspace settings, then choose where product posts should go. %s', 'fopost-for-woocommerce'),
+                    '<a href="https://fopost.com/docs" target="_blank" rel="noopener noreferrer">' . esc_html__('Read the docs', 'fopost-for-woocommerce') . '</a>'
                 ),
                 'id'    => 'fopost_wc_connection_options',
             ],
             [
-                'title' => __('API Key', 'fopost-woocommerce'),
-                'desc'  => __('Stored on this site and sent only to FoPost. Leave blank to keep the key you already saved.', 'fopost-woocommerce'),
+                'title' => __('API Key', 'fopost-for-woocommerce'),
+                'desc'  => __('Stored on this site and sent only to FoPost. Leave blank to keep the key you already saved.', 'fopost-for-woocommerce'),
                 'id'    => Settings::OPTION_API_KEY,
                 'type'  => 'fopost_wc_api_key',
             ],
@@ -81,31 +81,31 @@ final class SettingsTab extends WC_Settings_Page
 
         $settings[] = $workspaces === []
             ? [
-                'title'    => __('Workspace ID', 'fopost-woocommerce'),
-                'desc_tip' => __('Save a working API key to pick a workspace from a list instead.', 'fopost-woocommerce'),
+                'title'    => __('Workspace ID', 'fopost-for-woocommerce'),
+                'desc_tip' => __('Save a working API key to pick a workspace from a list instead.', 'fopost-for-woocommerce'),
                 'id'       => Settings::OPTION_WORKSPACE_ID,
                 'type'     => 'text',
                 'default'  => '',
             ]
             : [
-                'title'   => __('Workspace', 'fopost-woocommerce'),
+                'title'   => __('Workspace', 'fopost-for-woocommerce'),
                 'id'      => Settings::OPTION_WORKSPACE_ID,
                 'type'    => 'select',
-                'options' => ['' => __('Select a workspace', 'fopost-woocommerce')] + $workspaces,
+                'options' => ['' => __('Select a workspace', 'fopost-for-woocommerce')] + $workspaces,
                 'default' => '',
             ];
 
         $settings[] = $accounts === []
             ? [
-                'title'    => __('Account IDs', 'fopost-woocommerce'),
-                'desc_tip' => __('Comma separated. Save a workspace to pick connected accounts from a list instead.', 'fopost-woocommerce'),
+                'title'    => __('Account IDs', 'fopost-for-woocommerce'),
+                'desc_tip' => __('Comma separated. Save a workspace to pick connected accounts from a list instead.', 'fopost-for-woocommerce'),
                 'id'       => Settings::OPTION_ACCOUNTS,
                 'type'     => 'text',
                 'default'  => '',
             ]
             : [
-                'title'    => __('Accounts', 'fopost-woocommerce'),
-                'desc_tip' => __('Every product post goes to the accounts you pick here.', 'fopost-woocommerce'),
+                'title'    => __('Accounts', 'fopost-for-woocommerce'),
+                'desc_tip' => __('Every product post goes to the accounts you pick here.', 'fopost-for-woocommerce'),
                 'id'       => Settings::OPTION_ACCOUNTS,
                 'type'     => 'multiselect',
                 'class'    => 'wc-enhanced-select',
@@ -114,8 +114,8 @@ final class SettingsTab extends WC_Settings_Page
             ];
 
         $settings[] = [
-            'title'   => __('Attach the product image', 'fopost-woocommerce'),
-            'desc'    => __('Send the featured image with every product post.', 'fopost-woocommerce'),
+            'title'   => __('Attach the product image', 'fopost-for-woocommerce'),
+            'desc'    => __('Send the featured image with every product post.', 'fopost-for-woocommerce'),
             'id'      => Settings::OPTION_ATTACH_IMAGE,
             'type'    => 'checkbox',
             'default' => 'yes',
@@ -136,11 +136,11 @@ final class SettingsTab extends WC_Settings_Page
     {
         $settings = [
             [
-                'title' => __('Triggers and Messages', 'fopost-woocommerce'),
+                'title' => __('Triggers and Messages', 'fopost-for-woocommerce'),
                 'type'  => 'title',
                 'desc'  => sprintf(
                     /* translators: %s: the list of supported placeholders. */
-                    __('Turn on the product events you want posted, and edit what each one says. Placeholders: %s', 'fopost-woocommerce'),
+                    __('Turn on the product events you want posted, and edit what each one says. Placeholders: %s', 'fopost-for-woocommerce'),
                     '<code>' . esc_html(implode('</code> <code>', \Fopost\WooCommerce\Template::PLACEHOLDERS)) . '</code>'
                 ),
                 'id'    => 'fopost_wc_trigger_options',
@@ -150,15 +150,15 @@ final class SettingsTab extends WC_Settings_Page
         foreach (self::triggerLabels() as $trigger => $label) {
             $settings[] = [
                 'title'   => $label,
-                'desc'    => __('Post to FoPost when this happens.', 'fopost-woocommerce'),
+                'desc'    => __('Post to FoPost when this happens.', 'fopost-for-woocommerce'),
                 'id'      => Settings::triggerOptionName($trigger),
                 'type'    => 'checkbox',
                 'default' => 'no',
             ];
 
             $settings[] = [
-                'title'    => __('Message', 'fopost-woocommerce'),
-                'desc_tip' => __('Leave blank to fall back to the default message.', 'fopost-woocommerce'),
+                'title'    => __('Message', 'fopost-for-woocommerce'),
+                'desc_tip' => __('Leave blank to fall back to the default message.', 'fopost-for-woocommerce'),
                 'id'       => Settings::templateOptionName($trigger),
                 'type'     => 'textarea',
                 'css'      => 'width: 100%; height: 100px;',
@@ -180,9 +180,9 @@ final class SettingsTab extends WC_Settings_Page
     public static function triggerLabels(): array
     {
         return [
-            Settings::TRIGGER_PUBLISHED     => __('Product published', 'fopost-woocommerce'),
-            Settings::TRIGGER_ON_SALE       => __('Product goes on sale', 'fopost-woocommerce'),
-            Settings::TRIGGER_BACK_IN_STOCK => __('Product back in stock', 'fopost-woocommerce'),
+            Settings::TRIGGER_PUBLISHED     => __('Product published', 'fopost-for-woocommerce'),
+            Settings::TRIGGER_ON_SALE       => __('Product goes on sale', 'fopost-for-woocommerce'),
+            Settings::TRIGGER_BACK_IN_STOCK => __('Product back in stock', 'fopost-for-woocommerce'),
         ];
     }
 
@@ -211,7 +211,7 @@ final class SettingsTab extends WC_Settings_Page
                     type="password"
                     autocomplete="off"
                     value=""
-                    placeholder="<?php echo esc_attr($hint !== '' ? $hint : __('fp_...', 'fopost-woocommerce')); ?>"
+                    placeholder="<?php echo esc_attr($hint !== '' ? $hint : __('fp_...', 'fopost-for-woocommerce')); ?>"
                     class="input-text regular-input"
                 />
                 <?php if ($desc !== '') : ?>
@@ -221,7 +221,7 @@ final class SettingsTab extends WC_Settings_Page
                     <p>
                         <label>
                             <input type="checkbox" name="<?php echo esc_attr(Settings::FIELD_CLEAR_API_KEY); ?>" value="yes" />
-                            <?php esc_html_e('Remove the stored API key', 'fopost-woocommerce'); ?>
+                            <?php esc_html_e('Remove the stored API key', 'fopost-for-woocommerce'); ?>
                         </label>
                     </p>
                 <?php endif; ?>
@@ -240,7 +240,7 @@ final class SettingsTab extends WC_Settings_Page
     public function save(): void
     {
         if (! current_user_can('manage_woocommerce')) {
-            wp_die(esc_html__('You are not allowed to change these settings.', 'fopost-woocommerce'), 403);
+            wp_die(esc_html__('You are not allowed to change these settings.', 'fopost-for-woocommerce'), 403);
         }
 
         check_admin_referer('woocommerce-settings');
@@ -257,7 +257,7 @@ final class SettingsTab extends WC_Settings_Page
 
         Directory::flush();
 
-        WC_Admin_Settings::add_message(__('FoPost settings saved.', 'fopost-woocommerce'));
+        WC_Admin_Settings::add_message(__('FoPost settings saved.', 'fopost-for-woocommerce'));
     }
 
     /**

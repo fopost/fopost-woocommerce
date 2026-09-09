@@ -11,6 +11,8 @@
 
 declare(strict_types=1);
 
+defined('ABSPATH') || exit;
+
 add_filter(
     'fopost_wc_template_placeholders',
     static function (array $placeholders, WC_Product $product, string $trigger): array {
