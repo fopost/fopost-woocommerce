@@ -32,14 +32,9 @@ define('FOPOST_WC_DIR', plugin_dir_path(__FILE__));
 define('FOPOST_WC_URL', plugin_dir_url(__FILE__));
 define('FOPOST_WC_BASENAME', plugin_basename(__FILE__));
 
-// Require Composer autoloader.
+// Require Composer autoloader. The released build always bundles it; a source
+// checkout without `composer install` simply stays inert.
 if (! file_exists(FOPOST_WC_DIR . 'vendor/autoload.php')) {
-    add_action('admin_notices', static function (): void {
-        echo '<div class="notice notice-error"><p>';
-        echo esc_html__('FoPost for WooCommerce requires Composer dependencies. Please run "composer install" in the plugin directory.', 'fopost-for-woocommerce');
-        echo '</p></div>';
-    });
-
     return;
 }
 
