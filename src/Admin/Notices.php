@@ -10,7 +10,8 @@ defined('ABSPATH') || exit;
  * Surfaces delivery failures in the WordPress admin.
  *
  * Failures happen in a queue worker, where there is nobody to tell, so they are
- * parked in an option and shown to the next shop manager who loads an admin screen.
+ * parked in an option and shown once, on a WooCommerce screen, as a single notice
+ * pointing at the activity log. Never on unrelated admin pages.
  */
 final class Notices
 {
@@ -58,7 +59,7 @@ final class Notices
 
     public static function render(): void
     {
-        if (! current_user_can('manage_woocommerce')) {
+        if (! current_user_can('manage_woocommerce') || ! self::onWooCommerceScreen()) {
             return;
         }
 
@@ -70,29 +71,70 @@ final class Notices
 
         self::clear();
 
-        foreach ($notices as $notice) {
-            $productId = isset($notice['product_id']) ? (int) $notice['product_id'] : 0;
-            $message   = isset($notice['message']) && is_string($notice['message']) ? $notice['message'] : '';
-            $title     = $productId > 0 ? get_the_title($productId) : '';
+        echo '<div class="notice notice-error is-dismissible"><p>';
+        echo esc_html(self::summary($notices));
+        echo ' <a href="' . esc_url(self::logUrl()) . '">';
+        echo esc_html__('View FoPost Activity', 'fopost-for-woocommerce');
+        echo '</a></p></div>';
+    }
 
-            echo '<div class="notice notice-error is-dismissible"><p>';
-
-            if (is_string($title) && $title !== '') {
-                printf(
-                    /* translators: 1: product name, 2: the reason the delivery failed. */
-                    esc_html__('FoPost could not post %1$s: %2$s', 'fopost-for-woocommerce'),
-                    '<strong>' . esc_html($title) . '</strong>', // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Escaped above.
-                    esc_html($message)
-                );
-            } else {
-                printf(
-                    /* translators: %s: the reason the delivery failed. */
-                    esc_html__('FoPost could not send a product post: %s', 'fopost-for-woocommerce'),
-                    esc_html($message)
-                );
-            }
-
-            echo '</p></div>';
+    /** Only WooCommerce's own screens, so the rest of the dashboard stays untouched. */
+    private static function onWooCommerceScreen(): bool
+    {
+        if (! function_exists('wc_get_screen_ids') || ! function_exists('get_current_screen')) {
+            return false;
         }
+
+        $screen = get_current_screen();
+
+        if ($screen === null) {
+            return false;
+        }
+
+        return in_array($screen->id, wc_get_screen_ids(), true);
+    }
+
+    /**
+     * @param array<int, array<string, mixed>> $notices
+     */
+    private static function summary(array $notices): string
+    {
+        if (count($notices) > 1) {
+            return sprintf(
+                /* translators: %d: how many product posts failed. */
+                _n(
+                    'FoPost could not send %d product post.',
+                    'FoPost could not send %d product posts.',
+                    count($notices),
+                    'fopost-for-woocommerce'
+                ),
+                count($notices)
+            );
+        }
+
+        $notice    = $notices[0];
+        $productId = isset($notice['product_id']) ? (int) $notice['product_id'] : 0;
+        $message   = isset($notice['message']) && is_string($notice['message']) ? $notice['message'] : '';
+        $title     = $productId > 0 ? get_the_title($productId) : '';
+
+        if (is_string($title) && $title !== '') {
+            return sprintf(
+                /* translators: 1: product name, 2: the reason the delivery failed. */
+                __('FoPost could not post %1$s: %2$s', 'fopost-for-woocommerce'),
+                $title,
+                $message
+            );
+        }
+
+        return sprintf(
+            /* translators: %s: the reason the delivery failed. */
+            __('FoPost could not send a product post: %s', 'fopost-for-woocommerce'),
+            $message
+        );
+    }
+
+    private static function logUrl(): string
+    {
+        return admin_url('admin.php?page=' . LogPage::MENU_SLUG);
     }
 }
