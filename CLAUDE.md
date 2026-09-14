@@ -232,11 +232,9 @@ layout or copy.
 `.github/workflows/release.yml` builds the zip with production dependencies only and attaches it to
 a GitHub release.
 
-**WordPress.org hosting requires a one-time manual plugin review submission.** The listing does not
-exist until a human uploads `make build`'s zip to https://wordpress.org/plugins/developers/add/ and
-the review team approves it, which creates the SVN repository.
-
-Once the SVN repository exists, `make` drives it:
+The plugin is listed at https://wordpress.org/plugins/fopost-for-woocommerce (approved 14 Sep 2026,
+first release the same day). Its SVN repository is
+https://plugins.svn.wordpress.org/fopost-for-woocommerce and `make` drives it:
 
 | Target | What it does |
 | :--- | :--- |
