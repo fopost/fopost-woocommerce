@@ -21,12 +21,18 @@ Each trigger is off by default, has its own message template, and can be switche
 
 ## Install
 
+Install it from the [WordPress plugin directory](https://wordpress.org/plugins/fopost-for-woocommerce/):
+in WordPress admin go to Plugins, Add New, search for **FoPost for WooCommerce**, then install and
+activate it. WooCommerce must be active first.
+
+To run from source instead:
+
 ```bash
 composer install
 ```
 
-Then copy the directory to `wp-content/plugins/fopost-for-woocommerce` and activate it. WooCommerce must
-be active first. A release zip with production dependencies is attached to every GitHub release.
+Then copy the directory to `wp-content/plugins/fopost-for-woocommerce` and activate it. A release zip
+with production dependencies is also attached to every GitHub release.
 
 ## Configure
 
