@@ -18,7 +18,7 @@ PHP SDK.
 | **PHP namespace** | `Fopost\WooCommerce\` |
 | **PHP version** | 8.1+ (strict types required) |
 | **Requires** | WordPress 6.0+, WooCommerce 8.0+ |
-| **Runtime dependency** | `fopost/sdk` ^0.1 (Composer, bundled in the zip) |
+| **Runtime dependency** | `fopost/sdk` ^0.2 (Composer, bundled in the zip) |
 | **License** | GPL-2.0-or-later |
 
 ## Brand Rules
@@ -72,7 +72,7 @@ only. If `fopost-wp` ever grows an outbound client, revisit this and delete the 
 
 ## Parent Dependency
 
-`fopost/sdk` resolves from Packagist (`"fopost/sdk": "^0.1"`). There is no `repositories` block in
+`fopost/sdk` resolves from Packagist (`"fopost/sdk": "^0.2"`). There is no `repositories` block in
 `composer.json` and none should be added back; the source lives in the sibling `fopost-php` repo.
 
 ## Architecture
