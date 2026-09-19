@@ -31,7 +31,7 @@
     },
     "require": {
         "php": "^8.1",
-        "fopost/sdk": "^0.1"
+        "fopost/sdk": "^0.2"
     },
     "require-dev": {
         "dealerdirect/phpcodesniffer-composer-installer": "^1.2",
