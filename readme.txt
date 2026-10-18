@@ -4,7 +4,7 @@ Donate link: https://fopost.com
 Tags: woocommerce, social media, auto post, product marketing, scheduling
 Requires at least: 6.0
 Tested up to: 7.1
-Stable tag: 0.1.0
+Stable tag: 0.2.0
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -119,6 +119,14 @@ Service terms: [Terms of Service](https://fopost.com/terms-of-service) &middot;
 
 == Changelog ==
 
+= 0.2.0 =
+* Requires the FoPost PHP SDK 0.3, picking up the current API contract.
+* Delivery-failure notices appear only on WooCommerce screens instead of every admin page.
+* Removed the admin notice shown when Composer dependencies were missing; the zip always bundles them.
+* Plugin URI points at the plugin's own documentation page, distinct from the Author URI.
+* The text domain is fopost-for-woocommerce, matching the WordPress.org slug.
+* The placeholder example is guarded against direct file access.
+
 = 0.1.0 =
 * First release: product published, on sale, and back in stock triggers, each individually switchable.
 * Message templates with product placeholders, plus filters for adding your own.
@@ -126,6 +134,9 @@ Service terms: [Terms of Service](https://fopost.com/terms-of-service) &middot;
 * Queued delivery through Action Scheduler, an activity log, and admin notices on failure.
 
 == Upgrade Notice ==
+
+= 0.2.0 =
+Moves to the FoPost PHP SDK 0.3 and keeps failure notices to WooCommerce screens.
 
 = 0.1.0 =
 First release.
