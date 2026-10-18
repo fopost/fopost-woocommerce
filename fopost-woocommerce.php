@@ -4,7 +4,7 @@
  * Plugin Name:       FoPost for WooCommerce
  * Plugin URI:        https://fopost.com/docs/sdks/woocommerce
  * Description:       Post your WooCommerce products to social media through FoPost when they are published, go on sale, or come back in stock.
- * Version:           0.1.0
+ * Version:           0.2.0
  * Requires at least: 6.0
  * Requires PHP:      8.1
  * Requires Plugins:  woocommerce
@@ -26,7 +26,7 @@ if (! defined('ABSPATH')) {
 }
 
 // Plugin constants.
-define('FOPOST_WC_VERSION', '0.1.0');
+define('FOPOST_WC_VERSION', '0.2.0');
 define('FOPOST_WC_FILE', __FILE__);
 define('FOPOST_WC_DIR', plugin_dir_path(__FILE__));
 define('FOPOST_WC_URL', plugin_dir_url(__FILE__));
